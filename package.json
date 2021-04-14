@@ -1,7 +1,7 @@
 {
   "name": "censys-node-js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Node JS libraries for the Censys APIs!",
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -14,12 +14,16 @@
     "url": "git+https://rickhazey-censys@github.com/censys/censys-node-js.git"
   },
   "author": "Rick Hazey",
-  "license": "Apache 2",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/censys/censys-node-js/issues"
   },
   "homepage": "https://github.com/censys/censys-node-js#readme",
   "dependencies": {
-    "fetch": "^1.1.0"
+    "fetch": "^1.1.0",
+    "isomorphic-unfetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0"
   }
 }
