@@ -6,10 +6,11 @@ module.exports = {
         "node": true,
         "jest/globals": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:jest/recommended"],
     "parserOptions": {
         "ecmaVersion": 11
     },
     "rules": {
-    }
+    },
+    "plugins": ["jest"]
 };
