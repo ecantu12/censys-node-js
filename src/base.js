@@ -1,10 +1,10 @@
-const package = require("../package.json");
+const pack = require("../package.json");
 const utils = require("./utils");
 const fetch = require("isomorphic-unfetch");
 
 const DEFAULT_OPTIONS = {
   timeout: 30,
-  userAgent: `${package.name}/${package.version}`,
+  userAgent: `${pack.name}/${pack.version}`,
 };
 
 class Base {

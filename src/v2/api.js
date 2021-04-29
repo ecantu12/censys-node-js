@@ -1,11 +1,13 @@
 const Base = require("../base");
 
+const BASE_URL = "https://search.censys.io/api/v2/";
+
 class CensysApiV2 extends Base {
   constructor(apiId, apiSecret, options = {}) {
     const auth =
       "Basic " + Buffer.from(apiId + ":" + apiSecret).toString("base64");
     const headers = { Authorization: auth };
-    super("https://search.censys.io/api/v2/", options, headers);
+    super(BASE_URL, options, headers);
 
     this.INDEX = options.index || "hosts";
     this.searchPath = `${this.INDEX}/search`;

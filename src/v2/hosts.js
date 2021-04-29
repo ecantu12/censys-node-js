@@ -1,12 +1,12 @@
 const CensysApiV2 = require("./api");
 
-class ClientV2 {
+class CensysHosts extends CensysApiV2 {
   constructor(apiId, apiSecret, options = {}) {
-    this.hosts = new CensysApiV2(apiId, apiSecret, {
+    super(apiId, apiSecret, {
       ...options,
       index: "hosts",
     });
   }
 }
 
-module.exports = { CensysApiV2, ClientV2 };
+module.exports = CensysHosts;

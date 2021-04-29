@@ -1,11 +1,13 @@
 const Base = require("../base");
 
+const BASE_URL = "https://censys.io/api/v1/";
+
 class CensysApiV1 extends Base {
   constructor(apiId, apiSecret, options = {}) {
     const auth =
       "Basic " + Buffer.from(apiId + ":" + apiSecret).toString("base64");
     const headers = { Authorization: auth };
-    super("https://search.censys.io/api/v1/", options, headers);
+    super(BASE_URL, options, headers);
 
     this.INDEX = options.index || "ipv4";
     this.searchPath = `search/${this.INDEX}`;
@@ -47,7 +49,7 @@ class CensysApiV1 extends Base {
   }
 
   view(documentId) {
-    return this.request(this.INDEX + "/" + documentId);
+    return this.request(this.viewPath + "/" + documentId);
   }
 
   report(query, field, numBuckets = 50) {
