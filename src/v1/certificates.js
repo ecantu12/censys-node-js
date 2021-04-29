@@ -11,7 +11,7 @@ class CensysCertificates extends CensysApiV1 {
   }
 
   async bulk(fingerprints) {
-    const result = {};
+    let result = {};
     let start = 0;
     let end = this.maxPerBulkRequest;
     while (start < length(fingerprints)) {
@@ -24,7 +24,7 @@ class CensysCertificates extends CensysApiV1 {
           body: JSON.stringify(data),
         }
       );
-      result = { ...result, ...data };
+      result = { ...result, ...res };
       start = end;
     }
     return result;

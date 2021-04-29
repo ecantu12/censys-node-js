@@ -1,7 +1,7 @@
 const Base = require("../base");
 
 const BASE_URL = "https://app.censys.io/api/v1";
-const KEYWORDS = ["assets", "comments", "tags", "subdomains"];
+// const KEYWORDS = ["assets", "comments", "tags", "subdomains"];
 
 class CensysAsmAPI extends Base {
   constructor(apiKey, options = {}) {
