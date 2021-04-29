@@ -1,33 +1,33 @@
 [
-    {
-        "scope": "https://censys.io:443",
-        "method": "GET",
-        "path": "/api/v1/account",
-        "body": "",
-        "status": 200,
-        "response": "1f8b08000000000000136dcd410ac2400c05d0ab48d66dc90cb8c9ca9b945063198833d8a48894debd63715335fc5dde4f16903b27050217f3cb20d95ed6a5020ddcd264de6b1953aeeb88115b0c6d88a71009b1a61ae523095fa4c37ddef2837ede3ce6e20cb400ab9627e74180ce7bab81494cdc7af6ffd76b7b36b902e1ba6e3416dd63c9000000",
-        "rawHeaders": [
-            "Date",
-            "Wed, 14 Apr 2021 16:41:35 GMT",
-            "Content-Type",
-            "application/json",
-            "Transfer-Encoding",
-            "chunked",
-            "Connection",
-            "close",
-            "Access-Control-Allow-Origin",
-            "*",
-            "Strict-Transport-Security",
-            "max-age=31536000; includeSubDomains; preload",
-            "X-Content-Type-Options",
-            "nosniff",
-            "CF-Cache-Status",
-            "DYNAMIC",
-            "Server",
-            "cloudflare",
-            "Content-Encoding",
-            "gzip"
-        ],
-        "responseIsBinary": false
-    }
+  {
+    "scope": "https://censys.io:443",
+    "method": "GET",
+    "path": "/api/v1/account",
+    "body": "",
+    "status": 200,
+    "response": "1f8b08000000000000136dcd410ac2400c05d0ab48d66dc90cb8c9ca9b945063198833d8a48894debd63715335fc5dde4f16903b27050217f3cb20d95ed6a5020ddcd264de6b1953aeeb88115b0c6d88a71009b1a61ae523095fa4c37ddef2837ede3ce6e20cb400ab9627e74180ce7bab81494cdc7af6ffd76b7b36b902e1ba6e3416dd63c9000000",
+    "rawHeaders": [
+      "Date",
+      "Wed, 14 Apr 2021 16:41:35 GMT",
+      "Content-Type",
+      "application/json",
+      "Transfer-Encoding",
+      "chunked",
+      "Connection",
+      "close",
+      "Access-Control-Allow-Origin",
+      "*",
+      "Strict-Transport-Security",
+      "max-age=31536000; includeSubDomains; preload",
+      "X-Content-Type-Options",
+      "nosniff",
+      "CF-Cache-Status",
+      "DYNAMIC",
+      "Server",
+      "cloudflare",
+      "Content-Encoding",
+      "gzip"
+    ],
+    "responseIsBinary": false
+  }
 ]
