@@ -6,10 +6,7 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://rickhazey-censys@github.com/censys/censys-node-js.git"
-  },
+  "repository": "github:censys/censys-node-js.git",
   "contributors": [
     {
       "name": "Rick Hazey"
