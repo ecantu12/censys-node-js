@@ -1,19 +1,25 @@
 {
-  "name": "censys-node-js",
-  "version": "2.0.0",
+  "name": "@censys/node",
+  "version": "2.0.0-beta.0",
   "description": "Node JS libraries for the Censys APIs!",
-  "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://rickhazey-censys@github.com/censys/censys-node-js.git"
   },
-  "author": "Rick Hazey",
+  "contributors": [
+    {
+      "name": "Rick Hazey"
+    },
+    {
+      "name": "Aidan Holland",
+      "email": "aidan@censys.io",
+      "url": "https://github.com/thehappydinoa"
+    }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/censys/censys-node-js/issues"
@@ -24,6 +30,9 @@
     "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^7.24.0"
+    "eslint": "^7.24.0",
+    "jest": "^26.6.3",
+    "nock": "^13.0.11",
+    "nock-record": "^0.3.9"
   }
 }
