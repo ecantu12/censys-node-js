@@ -8,7 +8,7 @@ class CensysAsmAPI extends Base {
     super(BASE_URL, options, { "Censys-Api-Key": apiKey });
   }
 
-  async *_get_page(path, pageNumber = 1, pageSize = 500) {
+  async *getPage(path, pageNumber = 1, pageSize = 500) {
     let totalPages = Infinity;
 
     while (pageNumber <= totalPages) {
@@ -31,15 +31,15 @@ class CensysAsmAPI extends Base {
     }
   }
 
-  async *_get_logbook_page(path, args = {}) {
+  async *getLogbookPage(path, args = {}) {
     let endOfEvents = false;
 
     while (!endOfEvents) {
-      let res = this.request(path, args);
+      let res = await this.request(path, args);
       endOfEvents = res.endOfEvents;
       args = { cursor: res.nextCursor };
 
-      yield* res["events"];
+      yield* res.events;
     }
   }
 }
