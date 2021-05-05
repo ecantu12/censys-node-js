@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#censys.v1.client.certificates report 1`] = `
+Object {
+  "metadata": Object {
+    "backend_time": 172,
+    "buckets": 3,
+    "count": 958646,
+    "error_bound": 6519,
+    "nonnull_count": 813207,
+    "other_result_count": 323990,
+    "query": "*",
+  },
+  "results": Array [
+    Object {
+      "doc_count": 199512,
+      "key": "cloudflare",
+    },
+    Object {
+      "doc_count": 150828,
+      "key": "Apache",
+    },
+    Object {
+      "doc_count": 138877,
+      "key": "nginx",
+    },
+  ],
+  "status": "ok",
+}
+`;
+
+exports[`#censys.v1.client.certificates search 1`] = `
+Array [
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f70",
+  },
+]
+`;
+
+exports[`#censys.v1.client.certificates search max records 1`] = `
+Array [
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f700",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f701",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f702",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f703",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f704",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f705",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f706",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f707",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f708",
+  },
+  Object {
+    "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f709",
+  },
+]
+`;
+
+exports[`#censys.v1.client.certificates view 1`] = `
+Object {
+  "document": "fce621c0dc1c666d03d660472f636ce91e66e96460545f0da7eb1a24873e2f70",
+  "ports": Array [
+    80,
+    443,
+  ],
+  "protocols": Array [
+    "443/https_www",
+    "80/http",
+    "80/http_www",
+    "443/https",
+  ],
+  "tags": Array [
+    "http",
+    "https",
+  ],
+}
+`;
+
+exports[`#censys.v1.client.certificates view invalid document id 1`] = `
+Object {
+  "error": "The value definitely-not-a-document is not a valid document.",
+  "error_type": "unknown",
+  "status": "error",
+}
+`;
+
+exports[`#censys.v1.client.ipv4 report 1`] = `
+Object {
+  "metadata": Object {
+    "backend_time": 172,
+    "buckets": 3,
+    "count": 958646,
+    "error_bound": 6519,
+    "nonnull_count": 813207,
+    "other_result_count": 323990,
+    "query": "*",
+  },
+  "results": Array [
+    Object {
+      "doc_count": 199512,
+      "key": "cloudflare",
+    },
+    Object {
+      "doc_count": 150828,
+      "key": "Apache",
+    },
+    Object {
+      "doc_count": 138877,
+      "key": "nginx",
+    },
+  ],
+  "status": "ok",
+}
+`;
+
+exports[`#censys.v1.client.ipv4 search 1`] = `
+Array [
+  Object {
+    "document": "8.8.8.8",
+  },
+]
+`;
+
+exports[`#censys.v1.client.ipv4 search max records 1`] = `
+Array [
+  Object {
+    "document": "8.8.8.80",
+  },
+  Object {
+    "document": "8.8.8.81",
+  },
+  Object {
+    "document": "8.8.8.82",
+  },
+  Object {
+    "document": "8.8.8.83",
+  },
+  Object {
+    "document": "8.8.8.84",
+  },
+  Object {
+    "document": "8.8.8.85",
+  },
+  Object {
+    "document": "8.8.8.86",
+  },
+  Object {
+    "document": "8.8.8.87",
+  },
+  Object {
+    "document": "8.8.8.88",
+  },
+  Object {
+    "document": "8.8.8.89",
+  },
+]
+`;
+
+exports[`#censys.v1.client.ipv4 view 1`] = `
+Object {
+  "document": "8.8.8.8",
+  "ports": Array [
+    80,
+    443,
+  ],
+  "protocols": Array [
+    "443/https_www",
+    "80/http",
+    "80/http_www",
+    "443/https",
+  ],
+  "tags": Array [
+    "http",
+    "https",
+  ],
+}
+`;
+
+exports[`#censys.v1.client.ipv4 view invalid document id 1`] = `
+Object {
+  "error": "The value definitely-not-a-document is not a valid document.",
+  "error_type": "unknown",
+  "status": "error",
+}
+`;
+
+exports[`#censys.v1.client.websites report 1`] = `
+Object {
+  "metadata": Object {
+    "backend_time": 172,
+    "buckets": 3,
+    "count": 958646,
+    "error_bound": 6519,
+    "nonnull_count": 813207,
+    "other_result_count": 323990,
+    "query": "*",
+  },
+  "results": Array [
+    Object {
+      "doc_count": 199512,
+      "key": "cloudflare",
+    },
+    Object {
+      "doc_count": 150828,
+      "key": "Apache",
+    },
+    Object {
+      "doc_count": 138877,
+      "key": "nginx",
+    },
+  ],
+  "status": "ok",
+}
+`;
+
+exports[`#censys.v1.client.websites search 1`] = `
+Array [
+  Object {
+    "document": "google.com",
+  },
+]
+`;
+
+exports[`#censys.v1.client.websites search max records 1`] = `
+Array [
+  Object {
+    "document": "google.com0",
+  },
+  Object {
+    "document": "google.com1",
+  },
+  Object {
+    "document": "google.com2",
+  },
+  Object {
+    "document": "google.com3",
+  },
+  Object {
+    "document": "google.com4",
+  },
+  Object {
+    "document": "google.com5",
+  },
+  Object {
+    "document": "google.com6",
+  },
+  Object {
+    "document": "google.com7",
+  },
+  Object {
+    "document": "google.com8",
+  },
+  Object {
+    "document": "google.com9",
+  },
+]
+`;
+
+exports[`#censys.v1.client.websites view 1`] = `
+Object {
+  "document": "google.com",
+  "ports": Array [
+    80,
+    443,
+  ],
+  "protocols": Array [
+    "443/https_www",
+    "80/http",
+    "80/http_www",
+    "443/https",
+  ],
+  "tags": Array [
+    "http",
+    "https",
+  ],
+}
+`;
+
+exports[`#censys.v1.client.websites view invalid document id 1`] = `
+Object {
+  "error": "The value definitely-not-a-document is not a valid document.",
+  "error_type": "unknown",
+  "status": "error",
+}
+`;

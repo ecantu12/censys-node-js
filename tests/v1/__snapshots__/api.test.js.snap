@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#censys.v1.client get account data 1`] = `
+exports[`#censys.v1.api get account data 1`] = `
 Object {
   "email": "test@censys.io",
   "first_login": "2020-01-12 12:00:00",
@@ -11,5 +11,13 @@ Object {
     "resets_at": "2021-01-12 12:00:00",
     "used": 0,
   },
+}
+`;
+
+exports[`#censys.v1.api get account quota 1`] = `
+Object {
+  "allowance": 500000,
+  "resets_at": "2021-01-12 12:00:00",
+  "used": 0,
 }
 `;
