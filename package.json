@@ -1,13 +1,19 @@
 {
   "name": "@censys/node",
-  "version": "2.0.0-beta.0",
-  "description": "Node JS libraries for the Censys APIs!",
+  "version": "2.0.0-beta.1",
+  "description": "An easy-to-use and lightweight API wrapper for Censys APIs.",
+  "keywords": [
+    "censys",
+    "censys-api"
+  ],
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint ."
   },
-  "repository": "github:censys/censys-node-js.git",
   "contributors": [
     {
       "name": "Rick Hazey"
@@ -19,10 +25,11 @@
     }
   ],
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/censys/censys-node-js/issues"
+  "repository": "github:censys/censys-node-js.git",
+  "bugs": "https://github.com/censys/censys-node-js/issues",
+  "engines": {
+    "node": ">=12.0.0"
   },
-  "homepage": "https://github.com/censys/censys-node-js#readme",
   "dependencies": {
     "fetch": "^1.1.0",
     "isomorphic-unfetch": "^3.1.0",
