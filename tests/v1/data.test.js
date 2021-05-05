@@ -24,18 +24,18 @@ describe("#censys.v1.data", () => {
   it("get series", async () => {
     scope.get("/data").reply(200, seriesJson);
     const res = await c.getSeries();
-    expect(res).toMatchSnapshot();
+    expect(res).toStrictEqual(seriesJson);
   });
 
   it("view series", async () => {
     scope.get(`/data/${testSeries}`).reply(200, viewJson);
     const res = await c.viewSeries(testSeries);
-    expect(res).toMatchSnapshot();
+    expect(res).toStrictEqual(viewJson);
   });
 
   it("view result", async () => {
     scope.get(`/data/${testSeries}/${testResult}`).reply(200, resultJson);
     const res = await c.viewResult(testSeries, testResult);
-    expect(res).toMatchSnapshot();
+    expect(res).toStrictEqual(resultJson);
   });
 });

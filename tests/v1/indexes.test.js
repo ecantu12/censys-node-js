@@ -50,30 +50,29 @@ describe.each([
   const scope = nock(i.baseUrl);
 
   it("view", async () => {
-    scope
-      .get(`/view/${index}/${documentId}`)
-      .reply(200, { ...viewJson, document: documentId });
+    const testJson = { ...viewJson, document: documentId };
+    scope.get(`/view/${index}/${documentId}`).reply(200, testJson);
     const res = await i.view(documentId);
-    expect(res).toMatchSnapshot();
+    expect(res).toStrictEqual(testJson);
   });
 
   it("view invalid document id", async () => {
-    scope.get(`/view/${index}/${INVALID_DOCUMENT_ID}`).reply(404, {
+    const testJson = {
       status: "error",
       error_type: "unknown",
       error: `The value ${INVALID_DOCUMENT_ID} is not a valid document.`,
-    });
+    };
+    scope.get(`/view/${index}/${INVALID_DOCUMENT_ID}`).reply(404, testJson);
     expect.assertions(1);
-    await expect(i.view(INVALID_DOCUMENT_ID)).rejects.toMatchSnapshot();
+    await expect(i.view(INVALID_DOCUMENT_ID)).rejects.toStrictEqual(testJson);
   });
 
   it("search", async () => {
-    scope
-      .post(`/search/${index}`)
-      .reply(200, { ...searchJson, results: [{ document: documentId }] });
+    const testJson = { ...searchJson, results: [{ document: documentId }] };
+    scope.post(`/search/${index}`).reply(200, testJson);
     const results = [];
     for await (const res of i.search("*")) results.push(res);
-    expect(results).toMatchSnapshot();
+    expect(results).toStrictEqual(testJson.results);
   });
 
   it("search max records", async () => {
@@ -81,18 +80,16 @@ describe.each([
     for (let i = 0; i < maxRecords + 5; i++) {
       sampleResults.push({ document: documentId + i });
     }
-    scope
-      .post(`/search/${index}`)
-      .reply(200, { ...searchJson, results: sampleResults });
+    const testJson = { ...searchJson, results: sampleResults };
+    scope.post(`/search/${index}`).reply(200, testJson);
     const results = [];
     for await (const res of i.search("*", [], 1, maxRecords)) results.push(res);
     expect(results.length).toBe(maxRecords);
-    expect(results).toMatchSnapshot();
   });
 
   it("report", async () => {
     scope.post(`/report/${index}`).reply(200, reportJson);
     const res = await i.report("*");
-    expect(res).toMatchSnapshot();
+    expect(res).toStrictEqual(reportJson);
   });
 });

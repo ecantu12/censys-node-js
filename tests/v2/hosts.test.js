@@ -86,7 +86,7 @@ describe.each([["hosts", "8.8.8.8"]])(
     it("view", async () => {
       scope.get(`/${index}/${documentId}`).reply(200, viewJson);
       const res = await i.view(documentId);
-      expect(res).toMatchSnapshot();
+      expect(res).toStrictEqual(viewJson.result);
     });
 
     it("view at time", async () => {
@@ -95,17 +95,18 @@ describe.each([["hosts", "8.8.8.8"]])(
         .query({ at_time: "2021-03-01T00:00:00.000000Z" })
         .reply(200, viewJson);
       const res = await i.view(documentId, new Date("2021, 3, 1"));
-      expect(res).toMatchSnapshot();
+      expect(res).toStrictEqual(viewJson.result);
     });
 
     it("view invalid document id", async () => {
-      scope.get(`/${index}/${INVALID_DOCUMENT_ID}`).reply(422, {
+      const testJson = {
         status: "Unprocessable Entity",
         code: 422,
         error: "Invalid ip address",
-      });
+      };
+      scope.get(`/${index}/${INVALID_DOCUMENT_ID}`).reply(422, testJson);
       expect.assertions(1);
-      await expect(i.view(INVALID_DOCUMENT_ID)).rejects.toMatchSnapshot();
+      await expect(i.view(INVALID_DOCUMENT_ID)).rejects.toStrictEqual(testJson);
     });
 
     it("search", async () => {
@@ -119,7 +120,7 @@ describe.each([["hosts", "8.8.8.8"]])(
       const results = [];
       for await (const res of i.search("service.service_name: HTTP"))
         results.push(res);
-      expect(results).toMatchSnapshot();
+      expect(results).toStrictEqual(searchJson.result.hits);
     });
 
     it("search pages", async () => {
@@ -158,7 +159,7 @@ describe.each([["hosts", "8.8.8.8"]])(
       expect(results.length).toBe(
         searchJson.result.hits.length + newHits.length
       );
-      expect(results).toMatchSnapshot();
+    expect(results).toStrictEqual([...searchJson.result.hits, ...newHits]);
     });
 
     it("aggregate", async () => {
@@ -174,7 +175,7 @@ describe.each([["hosts", "8.8.8.8"]])(
         "service.service_name: HTTP",
         "services.port"
       );
-      expect(res).toMatchSnapshot();
+      expect(res).toStrictEqual(aggregateJson.result);
     });
 
     it("aggregate num buckets", async () => {
@@ -191,7 +192,7 @@ describe.each([["hosts", "8.8.8.8"]])(
         "services.port",
         4
       );
-      expect(res).toMatchSnapshot();
+      expect(res).toStrictEqual(aggregateJson.result);
     });
   }
 );
