@@ -1,16 +1,10 @@
-const pack = require("../package.json");
 const utils = require("./utils");
 const fetch = require("isomorphic-unfetch");
-
-const DEFAULT_OPTIONS = {
-  timeout: 30,
-  userAgent: `${pack.name}/${pack.version}`,
-};
 
 class Base {
   constructor(baseUrl, options = {}, headers = {}) {
     this.baseUrl = baseUrl;
-    this.options = { ...DEFAULT_OPTIONS, ...options };
+    this.options = { ...utils.DEFAULT_OPTIONS, ...options };
     this.headers = {
       Accept: "application/json, */8",
       "User-Agent": this.options.userAgent,
@@ -32,11 +26,18 @@ class Base {
       ...options,
       headers,
     };
-    // console.log(url);
     return fetch(url, config).then((_res) => {
-      return _res.json().then((json) => {
-        return _res.ok ? json : Promise.reject(json ? json : _res.statusText);
-      });
+      return _res
+        .json()
+        .then((json) => {
+          return _res.ok ? json : Promise.reject(json);
+        })
+        .catch((err) => {
+          if (err.name === "FetchError") {
+            return Promise.reject(_res.statusText);
+          }
+          return Promise.reject(err);
+        });
     });
   }
 }
