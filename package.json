@@ -4,7 +4,8 @@
   "description": "Node JS libraries for the Censys APIs!",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "repository": "github:censys/censys-node-js.git",
   "contributors": [
