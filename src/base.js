@@ -18,10 +18,6 @@ class Base {
     };
   }
 
-  _handleError(_res) {
-    return _res.ok ? _res : Promise.reject(_res.statusText);
-  }
-
   request(endpoint, params = {}, options = {}) {
     let url = this.baseUrl + endpoint;
     if (!utils.isEmpty(params)) {
@@ -37,12 +33,11 @@ class Base {
       headers,
     };
     // console.log(url);
-    return fetch(url, config)
-      .then(this._handleError)
-      .then((r) => r.json())
-      .catch((error) => {
-        throw new Error(error);
+    return fetch(url, config).then((_res) => {
+      return _res.json().then((json) => {
+        return _res.ok ? json : Promise.reject(json ? json : _res.statusText);
       });
+    });
   }
 }
 

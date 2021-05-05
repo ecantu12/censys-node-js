@@ -14,7 +14,7 @@ class CensysCertificates extends CensysApiV1 {
     let result = {};
     let start = 0;
     let end = this.maxPerBulkRequest;
-    while (start < length(fingerprints)) {
+    while (start < fingerprints.length) {
       const data = { fingerprints: fingerprints.slice(start, end) };
       const res = await this.request(
         this.bulkPath,

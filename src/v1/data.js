@@ -3,7 +3,7 @@ const CensysApiV1 = require("./api");
 class CensysData extends CensysApiV1 {
   constructor(...args) {
     super(...args);
-    this._prefix = "data";
+    this._prefix = "/data";
   }
 
   getSeries() {

@@ -1,6 +1,7 @@
+const moment = require("moment");
 const Base = require("../base");
 
-const BASE_URL = "https://search.censys.io/api/v2/";
+const BASE_URL = "https://search.censys.io/api/v2";
 
 class CensysApiV2 extends Base {
   constructor(apiId, apiSecret, options = {}) {
@@ -10,11 +11,12 @@ class CensysApiV2 extends Base {
     super(BASE_URL, options, headers);
 
     this.INDEX = options.index || "hosts";
-    this.searchPath = `${this.INDEX}/search`;
-    this.aggregatePath = `${this.INDEX}/aggregate`;
+    this.viewPath = `/${this.INDEX}/`;
+    this.searchPath = `/${this.INDEX}/search`;
+    this.aggregatePath = `/${this.INDEX}/aggregate`;
   }
 
-  async *search(query, perPage = null, cursor = null, pages = 1) {
+  async *search(query, perPage = 100, cursor = null, pages = 1) {
     const args = { q: query };
     if (perPage) {
       args["per_page"] = perPage;
@@ -36,10 +38,10 @@ class CensysApiV2 extends Base {
   async view(documentId, atTime = null) {
     const args = {};
     if (atTime) {
-      args["at_time"] = atTime;
+      args["at_time"] = moment(atTime).format("YYYY-MM-DDTHH:mm:ss.SSSSSS") + "Z";
     }
 
-    const res = await this.request(this.INDEX + "/" + documentId, args);
+    const res = await this.request(this.viewPath + documentId, args);
     return res.result;
   }
 

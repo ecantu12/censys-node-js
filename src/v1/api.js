@@ -1,6 +1,6 @@
 const Base = require("../base");
 
-const BASE_URL = "https://censys.io/api/v1/";
+const BASE_URL = "https://censys.io/api/v1";
 
 class CensysApiV1 extends Base {
   constructor(apiId, apiSecret, options = {}) {
@@ -10,13 +10,18 @@ class CensysApiV1 extends Base {
     super(BASE_URL, options, headers);
 
     this.INDEX = options.index || "ipv4";
-    this.searchPath = `search/${this.INDEX}`;
-    this.viewPath = `view/${this.INDEX}`;
-    this.reportPath = `report/${this.INDEX}`;
+    this.searchPath = `/search/${this.INDEX}`;
+    this.viewPath = `/view/${this.INDEX}`;
+    this.reportPath = `/report/${this.INDEX}`;
   }
 
   async account() {
-    return await this.request("account");
+    return await this.request("/account");
+  }
+
+  async quota() {
+    const res = await this.account();
+    return res.quota;
   }
 
   async *search(
@@ -40,7 +45,7 @@ class CensysApiV1 extends Base {
       page++;
       data["page"] = page;
 
-      for (const r in res.results) {
+      for (const r of res.results) {
         yield r;
         count++;
         if (maxRecords && count >= maxRecords) return;
