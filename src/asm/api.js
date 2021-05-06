@@ -8,9 +8,12 @@ class CensysAsmAPI extends Base {
     super(BASE_URL, options, { "Censys-Api-Key": apiKey });
   }
 
-  async *getPage(path, pageNumber = 1, pageSize = 500) {
-    let totalPages = Infinity;
+  async *getPage(path, pageNumber = 1, pageSize = null) {
+    if (pageSize == null) {
+      pageSize = 500;
+    }
 
+    let totalPages = Infinity;
     while (pageNumber <= totalPages) {
       const args = { pageNumber, pageSize };
 
