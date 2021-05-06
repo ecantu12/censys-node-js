@@ -1,6 +1,6 @@
 const nock = require("nock");
 const Base = require("../src/base");
-const utils = require("../src/utils");
+const consts = require("../src/consts");
 
 describe("#censys.base", () => {
   const testUrl = "http://localhost:1234";
@@ -10,7 +10,7 @@ describe("#censys.base", () => {
     const b = new Base(testUrl, testOptions);
     expect(b.options).toStrictEqual({
       ...testOptions,
-      ...utils.DEFAULT_OPTIONS,
+      ...consts.DEFAULT_OPTIONS,
     });
   });
 
@@ -19,7 +19,7 @@ describe("#censys.base", () => {
     const b = new Base(testUrl, null, testHeaders);
     expect(b.headers).toStrictEqual({
       Accept: "application/json, */8",
-      "User-Agent": utils.DEFAULT_OPTIONS.userAgent,
+      "User-Agent": consts.DEFAULT_OPTIONS.userAgent,
       ...testHeaders,
     });
   });

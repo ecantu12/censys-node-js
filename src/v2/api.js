@@ -1,5 +1,6 @@
 const moment = require("moment");
 const Base = require("../base");
+const { SEARCH_DATETIME_FORMAT } = require("../consts");
 
 const BASE_URL = "https://search.censys.io/api/v2";
 
@@ -10,17 +11,14 @@ class CensysApiV2 extends Base {
     const headers = { Authorization: auth };
     super(BASE_URL, options, headers);
 
-    this.INDEX = options.index || "hosts";
+    this.INDEX = options.index;
     this.viewPath = `/${this.INDEX}/`;
     this.searchPath = `/${this.INDEX}/search`;
     this.aggregatePath = `/${this.INDEX}/aggregate`;
   }
 
   async *search(query, perPage = 100, cursor = null, pages = 1) {
-    const args = { q: query };
-    if (perPage) {
-      args["per_page"] = perPage;
-    }
+    const args = { q: query, per_page: perPage };
     let page = 1;
     while (page <= pages) {
       if (cursor) {
@@ -38,7 +36,7 @@ class CensysApiV2 extends Base {
   async view(documentId, atTime = null) {
     const args = {};
     if (atTime) {
-      args["at_time"] = moment(atTime).format("YYYY-MM-DDTHH:mm:ss.SSSSSS") + "Z";
+      args["at_time"] = moment(atTime).format(SEARCH_DATETIME_FORMAT) + "Z";
     }
 
     const res = await this.request(this.viewPath + documentId, args);

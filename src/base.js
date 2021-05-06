@@ -1,10 +1,11 @@
-const utils = require("./utils");
 const fetch = require("isomorphic-unfetch");
+const consts = require("./consts");
+const utils = require("./utils");
 
 class Base {
   constructor(baseUrl, options = {}, headers = {}) {
     this.baseUrl = baseUrl;
-    this.options = { ...utils.DEFAULT_OPTIONS, ...options };
+    this.options = { ...consts.DEFAULT_OPTIONS, ...options };
     this.headers = {
       Accept: "application/json, */8",
       "User-Agent": this.options.userAgent,
