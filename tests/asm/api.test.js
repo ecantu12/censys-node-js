@@ -8,6 +8,13 @@ describe("#censys.asm.api", () => {
   const baseUrl = i.baseUrl;
   const scope = nock(baseUrl);
 
+  it("sets api key header", async () => {
+    const testJson = { status: "checking header" };
+    scope.matchHeader("Censys-Api-Key", API_KEY).get("/").reply(200, testJson);
+    const res = await i.request("/");
+    expect(res).toStrictEqual(testJson);
+  });
+
   it.each([["assets"], ["comments"], ["tags"], ["subdomains"]])(
     "get page keywords",
     async (keyword) => {
