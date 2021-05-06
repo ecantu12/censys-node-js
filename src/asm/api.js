@@ -31,13 +31,13 @@ class CensysAsmAPI extends Base {
     }
   }
 
-  async *getLogbookPage(path, args = {}) {
+  async *getLogbookPage(path, args) {
     let endOfEvents = false;
 
     while (!endOfEvents) {
       let res = await this.request(path, args);
       endOfEvents = res.endOfEvents;
-      args = { cursor: res.nextCursor };
+      args = { ...args, cursor: res.nextCursor };
 
       yield* res.events;
     }
