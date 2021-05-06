@@ -21,6 +21,12 @@ describe("#censys.v1.api", () => {
   const scope = nock(baseUrl);
   scope.persist().get("/account").reply(200, accountJson);
 
+  it("basic auth configured correctly", async () => {
+    scope.get("/").basicAuth({ user: API_ID, pass: API_SECRET }).reply(200, {});
+    const res = await i.request("/");
+    expect(res).toStrictEqual({});
+  });
+
   it("get account data", async () => {
     const res = await i.account();
     expect(res).toStrictEqual(accountJson);
