@@ -21,7 +21,7 @@ class CensysApiV2 extends Base {
     this.aggregatePath = `/${this.INDEX}/aggregate`;
   }
 
-  async *search(query, perPage = 100, cursor = null, pages = 1) {
+  async *search(query, perPage = 100, pages = 1, cursor = null) {
     const args = { q: query, per_page: perPage };
     let page = 1;
     while (page <= pages) {
@@ -33,7 +33,7 @@ class CensysApiV2 extends Base {
       page++;
       let result = res.result;
       cursor = result.links.next;
-      yield* result.hits;
+      yield result.hits;
     }
   }
 

@@ -117,10 +117,8 @@ describe.each([["hosts", "8.8.8.8"]])(
           per_page: 100,
         })
         .reply(200, searchJson);
-      const results = [];
       for await (const res of i.search("service.service_name: HTTP"))
-        results.push(res);
-      expect(results).toStrictEqual(searchJson.result.hits);
+        expect(res).toStrictEqual(searchJson.result.hits);
     });
 
     it("search pages", async () => {
@@ -149,17 +147,10 @@ describe.each([["hosts", "8.8.8.8"]])(
         })
         .reply(200, { result: { ...searchJson.result, hits: newHits } });
       const results = [];
-      for await (const res of i.search(
-        "service.service_name: HTTP",
-        100,
-        null,
-        2
-      ))
+      for await (const res of i.search("service.service_name: HTTP", 100, 2))
         results.push(res);
-      expect(results.length).toBe(
-        searchJson.result.hits.length + newHits.length
-      );
-    expect(results).toStrictEqual([...searchJson.result.hits, ...newHits]);
+      expect(results.length).toBe(2);
+      expect(results).toStrictEqual([searchJson.result.hits, newHits]);
     });
 
     it("aggregate", async () => {
