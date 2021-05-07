@@ -9,11 +9,7 @@ const hosts = c.v2.hosts;
 
 // Single page of search results
 let query1 = hosts.search("service.service_name: HTTP", 5);
-(async function () {
-  for await (let page of query1) {
-    console.log(page);
-  }
-})();
+query1.next().then(page => console.log(page.value));
 
 // Multiple pages of search results
 let query2 = hosts.search("service.service_name: HTTP", 5, 2);
