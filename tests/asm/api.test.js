@@ -33,4 +33,34 @@ describe("#censys.asm.api", () => {
       expect(results).toStrictEqual(testJson[keyword]);
     }
   );
+
+  it("get page keywords multi page", async () => {
+    const testPath = "/assets";
+    const testJson = {
+      pageNumber: 1,
+      totalPages: 3,
+    };
+    const testAssets1 = ["asset1", "asset2"];
+    const testAssets2 = ["asset3", "asset4"];
+    const testAssets3 = ["asset5", "asset6"];
+    scope
+      .get(testPath)
+      .query({ pageNumber: 1, pageSize: 500 })
+      .reply(200, { ...testJson, assets: testAssets1 });
+    scope
+      .get(testPath)
+      .query({ pageNumber: 2, pageSize: 500 })
+      .reply(200, { ...testJson, pageNumber: 2, assets: testAssets2 });
+    scope
+      .get(testPath)
+      .query({ pageNumber: 3, pageSize: 500 })
+      .reply(200, { ...testJson, pageNumber: 3, assets: testAssets3 });
+    const results = [];
+    for await (const res of i.getPage(testPath)) results.push(res);
+    expect(results).toStrictEqual([
+      ...testAssets1,
+      ...testAssets2,
+      ...testAssets3,
+    ]);
+  });
 });
