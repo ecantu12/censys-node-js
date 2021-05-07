@@ -20,6 +20,12 @@ module.exports = {
     quotes: ["error", "double"],
     "node/global-require": "error",
     "node/exports-style": ["error", "module.exports"],
+    "jest/expect-expect": [
+      "error",
+      {
+        assertFunctionNames: ["expect", "scope.done"],
+      },
+    ],
   },
   plugins: ["jest"],
 };

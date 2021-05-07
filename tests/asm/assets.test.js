@@ -118,8 +118,8 @@ describe.each([["hosts"], ["certificates"], ["domains"]])(
       scope
         .delete(`${assetUrl}/${testAssetId}/tags/${testTagName}`)
         .reply(200, testJson);
-      const res = await i.deleteTag(testAssetId, testTagName);
-      expect(res).toStrictEqual(testJson);
+      await i.deleteTag(testAssetId, testTagName);
+      scope.done();
     });
   }
 );

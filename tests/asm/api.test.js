@@ -11,8 +11,8 @@ describe("#censys.asm.api", () => {
   it("sets api key header", async () => {
     const testJson = { status: "checking header" };
     scope.matchHeader("Censys-Api-Key", API_KEY).get("/").reply(200, testJson);
-    const res = await i.request("/");
-    expect(res).toStrictEqual(testJson);
+    await i.request("/");
+    scope.done();
   });
 
   it.each([["assets"], ["comments"], ["tags"], ["subdomains"]])(

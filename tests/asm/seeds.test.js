@@ -74,13 +74,13 @@ describe("#censys.asm.seeds", () => {
       .delete("/seeds")
       .query({ label: testLabel })
       .reply(200, genericResponseJson);
-    const res = await i.deleteSeedsByLabel(testLabel);
-    expect(res).toStrictEqual(genericResponseJson);
+    await i.deleteSeedsByLabel(testLabel);
+    scope.done();
   });
 
   it("delete seeds by id", async () => {
     scope.delete(`/seeds/${testSeedId}`).reply(200, genericResponseJson);
-    const res = await i.deleteSeedById(testSeedId);
-    expect(res).toStrictEqual(genericResponseJson);
+    await i.deleteSeedById(testSeedId);
+    scope.done();
   });
 });

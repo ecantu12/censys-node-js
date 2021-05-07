@@ -9,7 +9,7 @@ describe("#censys.v2.api", () => {
 
   it("basic auth configured correctly", async () => {
     scope.get("/").basicAuth({ user: API_ID, pass: API_SECRET }).reply(200, {});
-    const res = await c.request("/");
-    expect(res).toStrictEqual({});
+    await c.request("/");
+    scope.done();
   });
 });
