@@ -1,8 +1,8 @@
 const CensysAsmAPI = require("../api");
 
 class Assets extends CensysAsmAPI {
-  constructor(assetType, ...args) {
-    super(...args);
+  constructor(assetType, args) {
+    super(args);
     this.basePath = `/assets/${assetType}`;
   }
 

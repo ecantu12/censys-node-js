@@ -45,7 +45,7 @@ describe.each([
   ["ipv4", "8.8.8.8"],
   ["websites", "google.com"],
 ])("#censys.v1.client.%s", (index, documentId) => {
-  const c = new ClientV1(API_ID, API_SECRET);
+  const c = new ClientV1({ apiId: API_ID, apiSecret: API_SECRET });
   const i = c[index];
   const scope = nock(i.baseUrl);
 

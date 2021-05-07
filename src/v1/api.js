@@ -1,15 +1,18 @@
 const Base = require("../base");
+const { MissingValues } = require("../errors");
 
 const BASE_URL = "https://censys.io/api/v1";
 
 class CensysApiV1 extends Base {
-  constructor(apiId, apiSecret, options = {}) {
+  constructor({ apiId, apiSecret, index = "ipv4" } = {}) {
+    if (!apiId || !apiSecret) {
+      throw new MissingValues();
+    }
     const auth =
       "Basic " + Buffer.from(apiId + ":" + apiSecret).toString("base64");
-    const headers = { Authorization: auth };
-    super(BASE_URL, options, headers);
+    super({ baseUrl: BASE_URL, headers: { Authorization: auth } });
 
-    this.INDEX = options.index || "ipv4";
+    this.INDEX = index;
     this.searchPath = `/search/${this.INDEX}`;
     this.viewPath = `/view/${this.INDEX}`;
     this.reportPath = `/report/${this.INDEX}`;

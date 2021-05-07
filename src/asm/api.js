@@ -1,11 +1,15 @@
 const Base = require("../base");
+const { MissingValues } = require("../errors");
 
 const BASE_URL = "https://app.censys.io/api/v1";
 // const KEYWORDS = ["assets", "comments", "tags", "subdomains"];
 
 class CensysAsmAPI extends Base {
-  constructor(apiKey, options = {}) {
-    super(BASE_URL, options, { "Censys-Api-Key": apiKey });
+  constructor({ apiKey } = {}) {
+    if (!apiKey) {
+      throw new MissingValues("API Key");
+    }
+    super({ baseUrl: BASE_URL, headers: { "Censys-Api-Key": apiKey } });
   }
 
   async *getPage(path, pageNumber = 1, pageSize = null) {

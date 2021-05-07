@@ -3,12 +3,11 @@ const consts = require("./consts");
 const utils = require("./utils");
 
 class Base {
-  constructor(baseUrl, options = {}, headers = {}) {
+  constructor({ baseUrl, userAgent = consts.USER_AGENT, headers = {} }) {
     this.baseUrl = baseUrl;
-    this.options = { ...consts.DEFAULT_OPTIONS, ...options };
     this.headers = {
       Accept: "application/json, */8",
-      "User-Agent": this.options.userAgent,
+      "User-Agent": userAgent,
       ...headers,
     };
   }

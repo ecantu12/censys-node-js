@@ -1,8 +1,8 @@
 const CensysHosts = require("./hosts");
 
 class ClientV2 {
-  constructor(...args) {
-    this.hosts = new CensysHosts(...args);
+  constructor(args) {
+    this.hosts = new CensysHosts(args);
   }
 }
 

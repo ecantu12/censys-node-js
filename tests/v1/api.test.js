@@ -1,5 +1,5 @@
 const nock = require("nock");
-const { Client } = require("../../src");
+const CensysApiV1 = require("../../src/v1/api");
 const { API_ID, API_SECRET } = require("../consts");
 
 const accountJson = {
@@ -15,25 +15,27 @@ const accountJson = {
 };
 
 describe("#censys.v1.api", () => {
-  const c = new Client(API_ID, API_SECRET);
-  const i = c.v1.ipv4;
-  const baseUrl = i.baseUrl;
-  const scope = nock(baseUrl);
+  const c = new CensysApiV1({ apiId: API_ID, apiSecret: API_SECRET });
+  const scope = nock(c.baseUrl);
   scope.persist().get("/account").reply(200, accountJson);
+
+  it("missing apiId and apiSecret", () => {
+    expect(() => new CensysApiV1()).toThrow("No API ID or API Secret configured.");
+  });
 
   it("basic auth configured correctly", async () => {
     scope.get("/").basicAuth({ user: API_ID, pass: API_SECRET }).reply(200, {});
-    const res = await i.request("/");
+    const res = await c.request("/");
     expect(res).toStrictEqual({});
   });
 
   it("get account data", async () => {
-    const res = await i.account();
+    const res = await c.account();
     expect(res).toStrictEqual(accountJson);
   });
 
   it("get account quota", async () => {
-    const res = await i.quota();
+    const res = await c.quota();
     expect(res).toStrictEqual(accountJson.quota);
   });
 });

@@ -79,7 +79,7 @@ const aggregateJson = {
 describe.each([["hosts", "8.8.8.8"]])(
   "#censys.v2.client.%s",
   (index, documentId) => {
-    const c = new ClientV2(API_ID, API_SECRET);
+    const c = new ClientV2({ apiId: API_ID, apiSecret: API_SECRET });
     const i = c[index];
     const scope = nock(i.baseUrl);
 

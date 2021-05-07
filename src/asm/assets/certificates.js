@@ -1,8 +1,8 @@
 const Assets = require("./base");
 
 class CertificatesAssets extends Assets {
-  constructor(...args) {
-    super("certificates", ...args);
+  constructor(args) {
+    super("certificates", args);
   }
 }
 

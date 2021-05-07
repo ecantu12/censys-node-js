@@ -4,11 +4,11 @@ const CensysIPv4 = require("./ipv4");
 const CensysWebsites = require("./websites");
 
 class ClientV1 {
-  constructor(...args) {
-    this.ipv4 = new CensysIPv4(...args);
-    this.certificates = new CensysCertificates(...args);
-    this.websites = new CensysWebsites(...args);
-    this.data = new CensysData(...args);
+  constructor(args) {
+    this.ipv4 = new CensysIPv4(args);
+    this.certificates = new CensysCertificates(args);
+    this.websites = new CensysWebsites(args);
+    this.data = new CensysData(args);
   }
 }
 

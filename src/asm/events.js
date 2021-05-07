@@ -1,8 +1,8 @@
 const CensysAsmAPI = require("./api");
 
 class Events extends CensysAsmAPI {
-  constructor(...args) {
-    super(...args);
+  constructor(args) {
+    super(args);
     this.basePath = "/logbook";
   }
 

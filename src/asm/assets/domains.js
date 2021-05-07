@@ -1,8 +1,8 @@
 const Assets = require("./base");
 
 class DomainsAssets extends Assets {
-  constructor(...args) {
-    super("domains", ...args);
+  constructor(args) {
+    super("domains", args);
   }
 
   async *getSubdomains(domain, pageNumber = 1, pageSize = null) {

@@ -1,6 +1,6 @@
 const nock = require("nock");
 const { ClientAsm } = require("../../src/asm");
-const { API_Key } = require("../consts");
+const { API_KEY } = require("../consts");
 
 const hostCountJson = {
   totalAssetCount: 0,
@@ -13,10 +13,9 @@ const hostCountJson = {
 };
 
 describe("#censys.asm.clouds", () => {
-  const c = new ClientAsm(API_Key);
+  const c = new ClientAsm({apiKey: API_KEY});
   const i = c.clouds;
-  const baseUrl = i.baseUrl;
-  const scope = nock(baseUrl);
+  const scope = nock(i.baseUrl);
 
   it.each([["2021-01-01", "2021-01-01"]])(
     "get host counts",

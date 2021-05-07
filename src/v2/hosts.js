@@ -1,11 +1,8 @@
 const CensysApiV2 = require("./api");
 
 class CensysHosts extends CensysApiV2 {
-  constructor(apiId, apiSecret, options = {}) {
-    super(apiId, apiSecret, {
-      ...options,
-      index: "hosts",
-    });
+  constructor(args) {
+    super({ ...args, index: "hosts" });
   }
 }
 

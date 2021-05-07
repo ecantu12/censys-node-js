@@ -1,11 +1,8 @@
 const CensysApiV1 = require("./api");
 
 class CensysCertificates extends CensysApiV1 {
-  constructor(apiId, apiSecret, options = {}) {
-    super(apiId, apiSecret, {
-      ...options,
-      index: "certificates",
-    });
+  constructor(args) {
+    super({ ...args, index: "certificates" });
     this.bulkPath = `/bulk/${this.INDEX}`;
     this.maxPerBulkRequest = 50;
   }

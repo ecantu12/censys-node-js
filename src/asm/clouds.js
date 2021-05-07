@@ -2,8 +2,8 @@ const moment = require("moment");
 const CensysAsmAPI = require("./api");
 
 class Clouds extends CensysAsmAPI {
-  constructor(...args) {
-    super(...args);
+  constructor(args) {
+    super(args);
     this.basePath = "/clouds";
   }
 

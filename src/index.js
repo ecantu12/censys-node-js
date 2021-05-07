@@ -3,12 +3,9 @@ const { ClientV2 } = require("./v2");
 const { ClientAsm } = require("./asm");
 
 class Client {
-  constructor(apiId, apiSecret, options = {}) {
-    this.v1 = new ClientV1(apiId, apiSecret, options);
-    this.v2 = new ClientV2(apiId, apiSecret, options);
-    if (options?.asm?.apiKey) {
-      this.asm = new ClientAsm(options.asm.apiKey, options);
-    }
+  constructor(args) {
+    this.v1 = new ClientV1(args);
+    this.v2 = new ClientV2(args);
   }
 }
 

@@ -1,8 +1,8 @@
 const CensysApiV1 = require("./api");
 
 class CensysData extends CensysApiV1 {
-  constructor(...args) {
-    super(...args);
+  constructor(args) {
+    super(args);
     this._prefix = "/data";
   }
 

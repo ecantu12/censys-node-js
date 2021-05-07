@@ -1,6 +1,6 @@
 const nock = require("nock");
 const { ClientAsm } = require("../../src/asm");
-const { API_Key } = require("../consts");
+const { API_KEY } = require("../consts");
 
 const testCursor = "123456789";
 const eventsJson = {
@@ -10,10 +10,9 @@ const eventsJson = {
 };
 
 describe("#censys.asm.events", () => {
-  const c = new ClientAsm(API_Key);
+  const c = new ClientAsm({apiKey: API_KEY});
   const i = c.events;
-  const baseUrl = i.baseUrl;
-  const scope = nock(baseUrl);
+  const scope = nock(i.baseUrl);
 
   it("get cursor", async () => {
     scope.post("/logbook-cursor").reply(200, { cursor: testCursor });
