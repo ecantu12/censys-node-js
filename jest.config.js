@@ -1,6 +1,6 @@
 const config = {
   collectCoverage: true,
-  coverageReporters: ["json", "html"],
+  coverageReporters: ["text", "text-summary", "json", "html"],
 };
 
 module.exports = config;
