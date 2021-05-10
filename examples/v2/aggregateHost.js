@@ -1,8 +1,8 @@
-const { Client } = require("../../src");
+const { SearchClient } = require("../../src");
 
-const c = new Client({
+const c = new SearchClient({
   apiId: process.env.API_ID,
   apiSecret: process.env.API_SECRET,
 });
 
-c.aggregate("service.service_name: HTTP", "services.port", 5).then(console.log);
+c.v2.hosts.aggregate("service.service_name: HTTP", "services.port", 5).then(console.log);

@@ -2,11 +2,12 @@ const fetch = require("isomorphic-unfetch");
 const consts = require("./consts");
 const utils = require("./utils");
 
-class Base {
+class BaseApi {
   constructor({ baseUrl, userAgent = consts.USER_AGENT, headers = {} }) {
     this.baseUrl = baseUrl;
     this.headers = {
       Accept: "application/json, */8",
+      "Content-type": "application/json",
       "User-Agent": userAgent,
       ...headers,
     };
@@ -15,16 +16,12 @@ class Base {
   request(endpoint, params = {}, options = {}) {
     let url = this.baseUrl + endpoint;
     if (!utils.isEmpty(params)) {
-      let searchParams = new URLSearchParams(params);
+      const searchParams = new URLSearchParams(params);
       url += `?${searchParams.toString()}`;
     }
-    const headers = {
-      "Content-type": "application/json",
-      ...this.headers,
-    };
     const config = {
       ...options,
-      headers,
+      headers: this.headers,
     };
     return fetch(url, config).then((_res) => {
       return _res
@@ -42,4 +39,4 @@ class Base {
   }
 }
 
-module.exports = Base;
+module.exports = BaseApi;

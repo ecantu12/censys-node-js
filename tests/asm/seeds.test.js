@@ -1,5 +1,5 @@
 const nock = require("nock");
-const { ClientAsm } = require("../../src/asm");
+const { AsmClient } = require("../../src/asm");
 const { API_KEY } = require("../consts");
 
 const getSeedJson = { seeds: [{ type: "VARIOUS SEED" }] };
@@ -9,7 +9,7 @@ const testSeedId = 6;
 const testLabel = "seed-test-label";
 const testSeeds = [{ type: "test", value: "seed" }];
 describe("#censys.asm.seeds", () => {
-  const c = new ClientAsm({ apiKey: API_KEY });
+  const c = new AsmClient({ apiKey: API_KEY });
   const i = c.seeds;
   const scope = nock(i.baseUrl);
 

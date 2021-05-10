@@ -1,5 +1,5 @@
 const nock = require("nock");
-const { ClientAsm } = require("../../src/asm");
+const { AsmClient } = require("../../src/asm");
 const { API_KEY } = require("../consts");
 
 const testCursor = "123456789";
@@ -10,7 +10,7 @@ const eventsJson = {
 };
 
 describe("#censys.asm.events", () => {
-  const c = new ClientAsm({apiKey: API_KEY});
+  const c = new AsmClient({apiKey: API_KEY});
   const i = c.events;
   const scope = nock(i.baseUrl);
 
