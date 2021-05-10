@@ -1,6 +1,6 @@
 {
   "name": "@censys/node",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "An easy-to-use and lightweight Node.JS wrapper for Censys APIs.",
   "keywords": [
     "censys",
