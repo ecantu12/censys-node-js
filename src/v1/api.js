@@ -30,8 +30,8 @@ class CensysApiV1 extends Base {
   async *search(
     query,
     fields = [],
-    page = 1,
     maxRecords = null,
+    page = 1,
     flatten = false
   ) {
     let pages = Infinity;

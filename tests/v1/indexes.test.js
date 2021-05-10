@@ -83,7 +83,7 @@ describe.each([
     const testJson = { ...searchJson, results: sampleResults };
     scope.post(`/search/${index}`).reply(200, testJson);
     const results = [];
-    for await (const res of i.search("*", [], 1, maxRecords)) results.push(res);
+    for await (const res of i.search("*", [], maxRecords, 1)) results.push(res);
     expect(results.length).toBe(maxRecords);
   });
 
