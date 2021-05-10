@@ -1,46 +1,47 @@
-# censys-node-js
+# Censys Node.js Library
 
-Node JS libraries for the Censys API's!
+[![npm](https://img.shields.io/npm/v/@censys/node?logo=npm)](https://www.npmjs.com/package/@censys/node)
+[![node version](https://img.shields.io/node/v/@censys/node?logo=node.js)](https://nodejs.org/en/download/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-organge.svg?logo=git&logoColor=organge)](http://makeapullrequest.com)
+[![License](https://img.shields.io/github/license/censys/censys-node-js?logo=apache)](LICENSE)
 
+An easy-to-use and lightweight Node.JS wrapper for Censys APIs.
 
 ## Overview
 
-This repository provides examples and wrapper functions you can use to access to Censys API's. The examples show how you can create your own scripts and build workflows for your systems using Node JS and the Censys data and Attack Surface Management API's.
+This repository provides examples and wrapper functions you can use to access to Censys APIs. The examples show how you can create your own scripts and build workflows for your systems using Node JS and the Censys data and Attack Surface Management APIs.
 
-API keys are required and can be retrieved from your Censys account. If you don't have an account, please contact Censys:
+API keys are required and can be retrieved from your [Censys account](https://censys.io/account/api). If you don't have an account, please contact [Censys Sales](https://censys.io/contact-sales).
 
-    https://censys.io/contact-sales
+## Install
 
+The library can be installed using `npm` or `yarn`.
 
-Node JS v12 and one module (fetch) is required to use the wrappers and run the examples.
+```bash
+$ npm install @censys/node
+$ yarn add @censys/node
+```
 
+## Resources
 
-## Installation and Usage
+- [Censys Homepage](https://censys.io/)
+- [Source](https://github.com/censys/censys-node-js)
+- [Issue Tracker](https://github.com/censys/censys-node-js/issues)
+- [Changelog](https://github.com/censys/censys-node-js/releases)
 
-After you clone or download this repository, you'll need to install the fetch module.
+## Contributing
 
-Start by changing to the repository directory:
+All contributions (no matter how small) are always welcome.
 
-    cd censys-node-js
+## Development
 
+```bash
+$ git clone git@github.com:censys/censys-node-js.git
+$ yarn install
+```
 
-Install the fetch module:
+## License
 
-    npm install fetch --save 
+This software is licensed under [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-
-Now, the examples are ready to use. To call the logbook API, you would do this:
-
-	export CENSYS_SAAS_API_KEY='your_censys_saas_api_id'
-    cd censys-node-js/examples
-    node censys-data/accountStatus.js
-
-
-The account status in the :
-
-    export CENSYS_API_ID='your_censys_api_id'
-    export CENSYS_API_SECRET='your_censys_api_secret'
-    node censys-asm/logbook.js
-
-    
-There are multiple examples for you to explore and try out.
+- Copyright (C) 2021 Censys, Inc.
