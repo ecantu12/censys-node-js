@@ -4,16 +4,9 @@
   "description": "An easy-to-use and lightweight Node.JS wrapper for Censys APIs.",
   "keywords": [
     "censys",
-    "api"
+    "api",
+    "search"
   ],
-  "main": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "scripts": {
-    "test": "jest",
-    "lint": "eslint ."
-  },
   "contributors": [
     {
       "name": "Rick Hazey"
@@ -27,6 +20,14 @@
   "license": "Apache-2.0",
   "repository": "github:censys/censys-node-js.git",
   "bugs": "https://github.com/censys/censys-node-js/issues",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
   "engines": {
     "node": ">=12.0.0"
   },
