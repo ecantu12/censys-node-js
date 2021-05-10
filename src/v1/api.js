@@ -1,12 +1,12 @@
-const Base = require("../base");
-const { MissingValues } = require("../errors");
+const BaseApi = require("../base");
+const { MissingAuthError } = require("../errors");
 
 const BASE_URL = "https://censys.io/api/v1";
 
-class CensysApiV1 extends Base {
+class CensysApiV1 extends BaseApi {
   constructor({ apiId, apiSecret, index = "ipv4" } = {}) {
     if (!apiId || !apiSecret) {
-      throw new MissingValues();
+      throw new MissingAuthError();
     }
     const auth =
       "Basic " + Buffer.from(apiId + ":" + apiSecret).toString("base64");

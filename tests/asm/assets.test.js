@@ -1,5 +1,5 @@
 const nock = require("nock");
-const { ClientAsm } = require("../../src/asm");
+const { AsmClient } = require("../../src/asm");
 const { API_KEY } = require("../consts");
 
 const testAssetIds = {
@@ -26,7 +26,7 @@ const testSubdomains = {
 describe.each([["hosts"], ["certificates"], ["domains"]])(
   "#censys.asm.assets.%s",
   (assetType) => {
-    const c = new ClientAsm({ apiKey: API_KEY });
+    const c = new AsmClient({ apiKey: API_KEY });
     const i = c[assetType];
     const assetUrl = `/assets/${assetType}`;
     const scope = nock(i.baseUrl);
@@ -124,7 +124,7 @@ describe.each([["hosts"], ["certificates"], ["domains"]])(
 );
 
 describe("#censys.asm.assets.domains", () => {
-  const c = new ClientAsm({apiKey: API_KEY});
+  const c = new AsmClient({apiKey: API_KEY});
   const i = c.domains;
   const assetUrl = "/assets/domains";
   const scope = nock(i.baseUrl);

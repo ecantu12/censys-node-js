@@ -1,14 +1,14 @@
 const moment = require("moment");
-const Base = require("../base");
+const BaseApi = require("../base");
 const { SEARCH_DATETIME_FORMAT } = require("../consts");
-const { MissingValues } = require("../errors");
+const { MissingAuthError } = require("../errors");
 
 const BASE_URL = "https://search.censys.io/api/v2";
 
-class CensysApiV2 extends Base {
+class CensysApiV2 extends BaseApi {
   constructor({ apiId, apiSecret, index = "hosts" } = {}) {
     if (!apiId || !apiSecret) {
-      throw new MissingValues();
+      throw new MissingAuthError();
     }
     const auth =
       "Basic " + Buffer.from(apiId + ":" + apiSecret).toString("base64");

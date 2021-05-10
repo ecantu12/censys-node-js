@@ -1,14 +1,14 @@
 const nock = require("nock");
-const { ClientAsm } = require("../../src");
+const { AsmClient } = require("../../src");
 const { API_KEY } = require("../consts");
 
 describe("#censys.asm.api", () => {
-  const c = new ClientAsm({ apiKey: API_KEY });
+  const c = new AsmClient({ apiKey: API_KEY });
   const i = c.events;
   const scope = nock(i.baseUrl);
 
   it("missing apiKey", () => {
-    expect(() => new ClientAsm()).toThrow("No API Key configured.");
+    expect(() => new AsmClient()).toThrow("No API Key configured.");
   });
 
   it("sets api key header", async () => {

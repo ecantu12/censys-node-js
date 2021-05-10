@@ -3,7 +3,7 @@ const Events = require("./events");
 const Seeds = require("./seeds");
 const { CertificatesAssets, DomainsAssets, HostsAssets } = require("./assets");
 
-class ClientAsm {
+class AsmClient {
   constructor(args) {
     this.certificates = new CertificatesAssets(args);
     this.clouds = new Clouds(args);
@@ -16,7 +16,7 @@ class ClientAsm {
 
 module.exports = {
   CertificatesAssets,
-  ClientAsm,
+  AsmClient,
   Clouds,
   DomainsAssets,
   Events,

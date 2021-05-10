@@ -1,6 +1,6 @@
-const { Client } = require("../../src");
+const { SearchClient } = require("../../src");
 
-const c = new Client({
+const c = new SearchClient({
   apiId: process.env.API_ID,
   apiSecret: process.env.API_SECRET,
 });
