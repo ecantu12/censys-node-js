@@ -11,7 +11,7 @@ An easy-to-use and lightweight Node.JS wrapper for Censys APIs.
 
 This repository provides examples and wrapper functions you can use to access to Censys APIs. The examples show how you can create your own scripts and build workflows for your systems using Node JS and the Censys data and Attack Surface Management APIs.
 
-API keys are required and can be retrieved from your Censys account. If you don't have an account, please contact [Censys Sales](https://censys.io/contact-sales).
+API keys are required and can be retrieved from your [Censys account](https://censys.io/account/api). If you don't have an account, please contact [Censys Sales](https://censys.io/contact-sales).
 
 ## Install
 
@@ -20,6 +20,24 @@ The library can be installed using `npm` or `yarn`.
 ```bash
 $ npm install @censys/node
 $ yarn add @censys/node
+```
+
+## Resources
+
+- [Censys Homepage](https://censys.io/)
+- [Source](https://github.com/censys/censys-node-js)
+- [Issue Tracker](https://github.com/censys/censys-node-js/issues)
+- [Changelog](https://github.com/censys/censys-node-js/releases)
+
+## Contributing
+
+All contributions (no matter how small) are always welcome.
+
+## Development
+
+```bash
+$ git clone git@github.com:censys/censys-node-js.git
+$ yarn install
 ```
 
 ## License
