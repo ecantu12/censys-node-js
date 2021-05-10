@@ -2,7 +2,7 @@ const nock = require("nock");
 const { ClientAsm } = require("../../src/asm");
 const { API_KEY } = require("../consts");
 
-const hostCountJson = {
+const testCountJson = {
   totalAssetCount: 0,
   totalNewAssetCount: 0,
   totalCloudAssetCount: 0,
@@ -13,16 +13,53 @@ const hostCountJson = {
 };
 
 describe("#censys.asm.clouds", () => {
-  const c = new ClientAsm({apiKey: API_KEY});
+  const c = new ClientAsm({ apiKey: API_KEY });
   const i = c.clouds;
   const scope = nock(i.baseUrl);
 
   it.each([["2021-01-01", "2021-01-01"]])(
     "get host counts",
     async (since, sinceStr) => {
-      scope.get(`/clouds/hostCounts/${sinceStr}`).reply(200, hostCountJson);
+      scope.get(`/clouds/hostCounts/${sinceStr}`).reply(200, testCountJson);
       const res = await i.getHostCounts(since);
-      expect(res).toStrictEqual(hostCountJson);
+      expect(res).toStrictEqual(testCountJson);
     }
   );
+
+  it.each([["2021-01-01", "2021-01-01"]])(
+    "get domain counts",
+    async (since, sinceStr) => {
+      scope.get(`/clouds/domainCounts/${sinceStr}`).reply(200, testCountJson);
+      const res = await i.getDomainCounts(since);
+      expect(res).toStrictEqual(testCountJson);
+    }
+  );
+
+  it.each([["2021-01-01", "2021-01-01"]])(
+    "get object store counts",
+    async (since, sinceStr) => {
+      scope
+        .get(`/clouds/objectStoreCounts/${sinceStr}`)
+        .reply(200, testCountJson);
+      const res = await i.getObjectStoreCounts(since);
+      expect(res).toStrictEqual(testCountJson);
+    }
+  );
+
+  it.each([["2021-01-01", "2021-01-01"]])(
+    "get subdomain counts",
+    async (since, sinceStr) => {
+      scope
+        .get(`/clouds/subdomainCounts/${sinceStr}`)
+        .reply(200, testCountJson);
+      const res = await i.getSubdomainCounts(since);
+      expect(res).toStrictEqual(testCountJson);
+    }
+  );
+
+  it("get unknown counts", async () => {
+    scope.get("/clouds/unknownCounts").reply(200, testCountJson);
+    const res = await i.getUnknownCounts();
+    expect(res).toStrictEqual(testCountJson);
+  });
 });
