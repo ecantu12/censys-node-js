@@ -4,6 +4,8 @@ const consts = require("../src/consts");
 
 describe("#censys.base", () => {
   const testUrl = "http://localhost:1234";
+  const b = new BaseApi({ baseUrl: testUrl });
+  const scope = nock(testUrl);
 
   it("headers", () => {
     const testHeaders = { randomHeader: "123" };
@@ -17,8 +19,6 @@ describe("#censys.base", () => {
   });
 
   it("error handling", async () => {
-    const b = new BaseApi({ baseUrl: testUrl });
-    const scope = nock(testUrl);
     const testEndpoint = "/test";
     scope.get(testEndpoint).reply(500, "<definitely not json>");
     await expect(b.request(testEndpoint)).rejects.toBe("Internal Server Error");

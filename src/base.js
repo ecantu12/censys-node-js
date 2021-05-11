@@ -1,9 +1,18 @@
-const fetch = require("isomorphic-unfetch");
+const originalFetch = require("isomorphic-unfetch");
 const consts = require("./consts");
+const fetch = require("fetch-retry")(originalFetch, {
+  retries: consts.MAX_RETRIES,
+  retryDelay: consts.TIMEOUT_SECONDS * 1000,
+});
 const utils = require("./utils");
 
 class BaseApi {
-  constructor({ baseUrl, userAgent = consts.USER_AGENT, headers = {} }) {
+  constructor({
+    baseUrl,
+    userAgent = consts.USER_AGENT,
+    headers = {},
+    timeout = consts.TIMEOUT_SECONDS,
+  }) {
     this.baseUrl = baseUrl;
     this.headers = {
       Accept: "application/json, */8",
@@ -11,6 +20,7 @@ class BaseApi {
       "User-Agent": userAgent,
       ...headers,
     };
+    this.timeout = timeout;
   }
 
   request(endpoint, params = {}, options = {}) {
@@ -22,6 +32,8 @@ class BaseApi {
     const config = {
       ...options,
       headers: this.headers,
+      retries: consts.MAX_RETRIES,
+      retryDelay: this.timeout * 1000,
     };
     return fetch(url, config).then((_res) => {
       return _res
