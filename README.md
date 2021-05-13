@@ -11,7 +11,7 @@ An easy-to-use and lightweight Node.JS wrapper for Censys APIs.
 
 This repository provides examples and wrapper functions you can use to access to Censys APIs. The examples show how you can create your own scripts and build workflows for your systems using Node JS and the Censys data and Attack Surface Management APIs.
 
-API keys are required and can be retrieved from your [Censys account](https://censys.io/account/api). If you don't have an account, please contact [Censys Sales](https://censys.io/contact-sales).
+API keys are required and can be retrieved from your [Censys account](https://search.censys.io/account/api). If you don't have an account, please [sign up for a account](https://search.censys.io/register) or [contact Censys sales](https://censys.io/contact-sales).
 
 ## Install
 
