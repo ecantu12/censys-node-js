@@ -1,4 +1,4 @@
-const { SearchClient } = require("../../src");
+const { SearchClient } = require("@censys/node");
 
 const c = new SearchClient({
   apiId: process.env.API_ID,
