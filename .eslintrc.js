@@ -9,7 +9,6 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:node/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "prettier",
@@ -29,5 +28,5 @@ module.exports = {
     ],
   },
   plugins: ["jest", "@typescript-eslint"],
-  ignorePatterns: ["examples/"],
+  ignorePatterns: ["examples/", "lib/"],
 };
